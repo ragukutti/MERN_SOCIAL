@@ -1,0 +1,22 @@
+.signincontainer{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    gap: 1rem;
+    padding: 1rem;
+}
+.signincontainer>div{
+    display:flex;
+    align-items: center;
+    box-shadow: 0 3px 5px gray;
+    flex-direction: column;
+    width: 300px;
+    height: 450px;
+    padding: 10px;
+    border-radius: 10px;
+    padding:1rem;
+    gap: 1rem;
+    background-color: aliceblue;
+}

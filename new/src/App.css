@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;800&family=Poppins:ital,wght@0,400;0,800;1,300&family=Red+Hat+Display:ital,wght@1,300&display=swap');
+*{
+  margin:0;
+  padding:0;
+}
+.app{
+  padding: 1rem 1rem;
+  overflow: hidden;
+  font-family: Inconsolata;
+  background-color: rgba(248, 151, 72, 0.61);
+  /* background-image: url('https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') ; */
+  backdrop-filter: blur(8px);
+
+  
+}
+

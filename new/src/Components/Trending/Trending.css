@@ -1,0 +1,33 @@
+.followcontainer{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 3px 5px gray;
+    background-color: aliceblue;
+    border-radius: 5px;
+    width: 300px;
+    height: auto;
+    gap: 1rem;
+    padding:5px;
+}
+.followcontainer>span{
+    display: flex;
+    font-size: 20px;
+    font-weight: bold;
+}
+.trending{
+    display:flex;
+    align-items: center;
+    gap: 1px;
+    flex-direction: column;
+    gap: 1rem;
+}
+.trending>:nth-child(1){
+    font-weight: bold;
+    gap: 0;
+    font-size: 15px;
+}
+.trending>:nth-child(2){
+    font-size: 15px;
+}
+

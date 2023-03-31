@@ -1,0 +1,35 @@
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 1rem;
+}
+.content{
+    display: flex;
+    flex-direction: row;
+    border-radius: 10px;
+}
+
+img{
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+}
+input{
+   background-color: transparent;
+   border: none;
+   outline: none;
+}
+.icon{
+    display:flex;
+    align-items: center;
+    position: relative;
+    width: 1.5rem;
+    left: 5px;
+    border-radius: 5px;
+
+}
+.icon:hover{
+    cursor: pointer;
+}
