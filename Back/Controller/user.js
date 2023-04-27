@@ -18,7 +18,7 @@ const getUserById = async (req,res)=>{
        if(!user){
         return res.status(400).json({message:'user not foud'})
        }
-       res.status(200).json({user})
+       res.status(200).json(user)
     }catch(err){
         res.status(400).json({error:err.messsage})
     }
@@ -63,9 +63,9 @@ const follow = async (req,res)=>{
      if(!user.followers.includes(userId)){
        await user.updateOne({$push:{followers:userId}});
        await currentUser.updateOne({$push:{following:id}});
-       res.status(200).json("user followed")
+       res.status(200).json(" follow success")
      }else{
-        res.status(404).json("user already followed by you")
+        res.status(404).json("user already follow by you")
      }
      
     }catch(err){
@@ -99,14 +99,16 @@ const allFriends = async (req,res)=>{
         const {id} = req.params;
         const user = await User.findById(id);
         const friends = await Promise.all(
-            user.friends.map((id)=>(User.findById(id)))
+            user.followers.map((id)=>(User.findById(id)))
         )
-          const formatfriends = friends.map(
-             ({_id,firstName,lastName,location,occupation,picturePath})=>{
-                return {_id,firstName,lastName,location,occupation,picturePath}
+
+        const formatfriends = friends.map(
+             ({_id,userName,profilePicture})=>{
+                return {_id,userName,profilePicture}
              }
           )
-            } catch(err) {
+          res.status(200).json(formatfriends);
+    } catch(err) {
         res.status(400).json({error:err.message})
     }
 }

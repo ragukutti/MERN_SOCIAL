@@ -4,13 +4,13 @@ const router = express.Router();
 
 //get method
 router.get('/alluser',getAllUser);
-router.get('/allfriends',allFriends);
+router.get('/allfriends/:id',allFriends);
 router.get('/:id',getUserById);
 
 //update
-router.put('/:id/update',updateUser);
-router.put('/:id/follow',follow);
-router.put('/:id/unfollow',unfollow);
+router.put('/update/:id',updateUser);
+router.put('/follow/:id',follow);
+router.put('/unfollow/:id',unfollow);
 
 //delete
 router.delete('/:id/delete',deleteUser);

@@ -1,10 +1,10 @@
 const Post = require('../Model/post');
 const User = require('../Model/user');
 
-//crea9te post 
+//create post 
 const createPost = async (req,res)=>{
     try{
-         const newpost = new Post (req.body)
+         const newpost = new Post(req.body)
 
          await newpost.save();
          res.status(200).json(newpost);
@@ -19,7 +19,7 @@ const getFeedpost = async (req,res)=>{
      try{
         
         const post = await Post.find();
-        res.status(200).json(post)
+        res.status(200).json(post);
 
      }catch(err){
         res.status(400).json({error:err.message})
@@ -27,13 +27,13 @@ const getFeedpost = async (req,res)=>{
 };
 
 //user post 
-const userPost = async(req,res)=>{
-    try{ 
-        const {userId} = req.params;
-        const post = await Post.find(userId);
-        res.status(200).json({post});
+const userPost = async(req,res)=> {
+    try{
+      const{id} = req.params;
+      const post = await Post.findById(id);
+      res.status(200).json(post)
     }catch(err){
-        res.status(400).json({error:err.message})
+      res.status(400).json({error:err.message});
     }
 };
 
@@ -73,7 +73,7 @@ const deletePost = async(req,res)=>{
 //like dislike post 
 const  likePost = async (req,res)=>{
      try{
-        const {id } =req.params;
+        const {id} =req.params;
        const post = await Post.findById(id);
        if(!post.likes.includes(req.body.userId)){
         await post.updateOne({$push:{likes:req.body.userId}});
@@ -88,7 +88,20 @@ const  likePost = async (req,res)=>{
      }
 };
 
+//feed post 
+const feedPost = async (req,res)=> {
+  try{
+    const curentUser = await User.findById(req.params.id) 
+    const userPost = await Post.find({userId:curentUser._id})
+    const friendsPost = await Promise.all(
+        curentUser.following.map((friendid)=>{
+            return  Post.find({userId:friendid})   
+         })
+    );
+    res.status(200).json(userPost.concat(...friendsPost))
+  }catch(err){
+    res.status(400).json({error:err.message})
+  }
+};
 
-
-
-module.exports ={createPost,getFeedpost,userPost,deletePost,updatePost,likePost};
+module.exports ={createPost,getFeedpost,userPost,deletePost,updatePost,feedPost,likePost};

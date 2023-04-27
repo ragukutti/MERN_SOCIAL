@@ -1,10 +1,11 @@
 import  React ,{createContext, useReducer} from 'react'  
 import AuthReducer from './AuthReducer';
 
+
 const Intial_State = {
     user:null,
     isFetching:false,
-    error:false
+    error:false,
 }
 
 export const AuthContext = createContext(Intial_State);

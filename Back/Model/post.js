@@ -5,8 +5,8 @@ const PostSchema = new Schema({
         type:String,
         required:true
     },
-    postPicture:String,
-    desc:String,
+   postPicture:String,
+   desc:String,
     likes:{
         type:Array,
         default:[]
